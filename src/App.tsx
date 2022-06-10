@@ -1,6 +1,6 @@
-import {useSelector} from "react-redux";
-import {RootState} from "./state/store";
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { useSelector } from "react-redux";
+import { RootState } from "./state/store";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/NavBar"
 import Footer from "./components/Footer";
 import "./App.css"
@@ -11,12 +11,11 @@ function App() {
   // const logged = useSelector((state: RootState) => state.logging.isLogged)
   return (
     <BrowserRouter>
-      <Navbar/>
-      <RoutesSite/>
-      <Footer/>
+      <Navbar />
+      <RoutesSite />
+      <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
- 
