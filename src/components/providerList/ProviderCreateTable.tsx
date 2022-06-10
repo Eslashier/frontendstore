@@ -1,9 +1,5 @@
 import "../tables.css";
-import React, {useState} from 'react';
 import {providerType} from '../../state/features/providerSlice'
-
-interface IProviderProps {
-}
 
 type providerPropsType = {
     props: providerType

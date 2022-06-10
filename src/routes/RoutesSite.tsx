@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import LogIn from "../pages/log_in/LogIn"
+import SignUp from "../pages/sign_up/SignUp"
 import Bills from "../pages/bills/Bills";
 import Welcome from "../pages/welcome/welcome";
 import ProductAdd from "../pages/product_add/ProductAdd"
@@ -13,7 +14,8 @@ export default function RoutesSite() {
     return (
         <Routes>
             {/* {logged && <Route path='/' element={<Welcome/>}/>} */}
-            <Route path='/SignUp' element={<LogIn />} />
+            <Route path='/LogIn' element={<LogIn />} />
+            <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Bills' element={<Bills />} />
             <Route path='/' element={<Welcome />} />
             <Route path='/ProductAdd' element={<ProductAdd />} />

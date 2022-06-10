@@ -1,4 +1,4 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from 'react-redux'
 import loggingReducer from "./features/logginSlice";
 import providerReducer from "./features/providerSlice"

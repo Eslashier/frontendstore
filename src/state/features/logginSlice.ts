@@ -1,25 +1,27 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-type loggingType = {
-    isLogged: boolean
-}
-
-const initialState: loggingType = {
-    isLogged: false
-}
-
-export const loggingSlice = createSlice({
-    name: 'logging',
-    initialState,
-    reducers: {
-        toggleLogging: (state) => {
-            state.isLogged = !state.isLogged
+const initialState = {
+    user: null
+  }
+  
+  
+  const loggedInSlice = createSlice(
+    {
+      name: 'logged',
+      initialState,
+      reducers:{
+        logInInReducer(state, action){
+          const stateLoggedIn = {...state, user: action.payload}
+          return stateLoggedIn
+        },
+        logOutInReducer(){
+          return {user: null}
         }
+      }
     }
-})
-
-export const {toggleLogging} = loggingSlice.actions;
-
-const loggingReducer = loggingSlice.reducer;
-
-export default loggingReducer;
+  )
+  
+  
+  export default loggedInSlice.reducer
+  
+  export const {logInInReducer, logOutInReducer} = loggedInSlice.actions

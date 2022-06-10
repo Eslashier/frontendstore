@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {RootState} from "../store";
-import {possibleStatus} from "../../configuration/possibleStatus"
-import {getAllProviders} from "../../actions/getAllProviders"
-import {createNewProvider} from "../../actions/createNewProvider"
+import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
+import { possibleStatus } from "../../configuration/possibleStatus"
+import { getAllProviders } from "../../actions/getAllProviders"
+import { createNewProvider } from "../../actions/createNewProvider"
 
 
 type providerType = {
@@ -31,32 +31,32 @@ const providerSlice = createSlice({
     reducers: {
 
     },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         //GET BUILDERS
-        builder.addCase(getAllProviders.pending, (state, action)=>{
+        builder.addCase(getAllProviders.pending, (state, action) => {
             state.status = possibleStatus.PENDING;
         })
-        builder.addCase(getAllProviders.fulfilled, (state, action)=>{
+        builder.addCase(getAllProviders.fulfilled, (state, action) => {
             state.status = possibleStatus.COMPLETED;
             state.providers = action.payload;
         })
-        builder.addCase(getAllProviders.rejected, (state, action)=>{
+        builder.addCase(getAllProviders.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong fetching the providers"
-            state.providers=[]
+            state.providers = []
         })
         //POST BUILDERS
-        builder.addCase(createNewProvider.pending, (state, action)=>{
+        builder.addCase(createNewProvider.pending, (state, action) => {
             state.status = possibleStatus.PENDING;
         })
-        builder.addCase(createNewProvider.fulfilled, (state, action)=>{
+        builder.addCase(createNewProvider.fulfilled, (state, action) => {
             state.status = possibleStatus.COMPLETED;
             state.providers.push(action.payload);
         })
-        builder.addCase(createNewProvider.rejected, (state, action)=>{
+        builder.addCase(createNewProvider.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong posting a new provider";
-            state.providers=[]
+            state.providers = []
         })
     }
 })
