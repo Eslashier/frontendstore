@@ -1,4 +1,4 @@
-import "../forms.css";
+import "../styles/forms.css";
 import React, { useState } from 'react';
 import { useAppDispatch } from "../../state/store"
 import { providerType } from "../../state/features/providerSlice"

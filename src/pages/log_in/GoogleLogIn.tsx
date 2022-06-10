@@ -27,7 +27,7 @@ const GoogleLogIn: React.FunctionComponent = () => {
 
                 dispatch(logInInReducer(user))
 
-                navigate('/')
+                navigate('/Welcome')
 
             }).catch((error) => {
                 const errorCode = error.code;

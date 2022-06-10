@@ -1,4 +1,4 @@
-import "../../components/forms.css"
+import "../../components/styles/forms.css"
 import "../../App.css"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";

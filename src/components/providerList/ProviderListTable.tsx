@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import "../tables.css";
+import "../styles/tables.css";
 import { useAppDispatch } from "../../state/store"
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { selectProvidersState, selectProvidersStatus, selectProvidersFetchError } from "../../state/features/providerSlice"

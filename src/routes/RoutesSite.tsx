@@ -9,21 +9,30 @@ import ProductListAll from "../pages/product_list_all/ProductListAll"
 import ProviderAdd from "../pages/provider_add/ProviderAdd";
 import ProviderList from "../pages/provider_list/ProviderList";
 import Receipts from "../pages/receipts/Receipts";
+import { useSelector } from "react-redux";
+import { RootState } from '../state/store';
 
 export default function RoutesSite() {
-    return (
+    const { user } = useSelector((state: RootState) => state.logging)
+
+    if(user!==null){
+        return(
         <Routes>
-            {/* {logged && <Route path='/' element={<Welcome/>}/>} */}
-            <Route path='/LogIn' element={<LogIn />} />
-            <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Bills' element={<Bills />} />
-            <Route path='/' element={<Welcome />} />
+            <Route path='/Welcome' element={<Welcome />} />
             <Route path='/ProductAdd' element={<ProductAdd />} />
             <Route path='/ProductList' element={<ProductList />} />
             <Route path='/ProductListAll' element={<ProductListAll />} />
             <Route path='/ProviderAdd' element={<ProviderAdd />} />
             <Route path='/ProviderList' element={<ProviderList />} />
             <Route path='/Receipts' element={<Receipts />} />
+        </Routes>
+        )
+    }
+    return (
+        <Routes>
+            <Route path='/' element={<LogIn />} />
+            <Route path='/SignUp' element={<SignUp />} />
         </Routes>
     )
 }

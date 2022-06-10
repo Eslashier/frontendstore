@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from "../imgs/Logo.png"
-import "./stylesNavBar.css";
+import "./styles/stylesNavBar.css";
 import { RootState } from '../state/store';
 import { useSelector } from "react-redux";
 import LogOut from './LogOut';

@@ -1,4 +1,4 @@
-import "../tables.css";
+import "../styles/tables.css";
 import {providerType} from '../../state/features/providerSlice'
 
 type providerPropsType = {

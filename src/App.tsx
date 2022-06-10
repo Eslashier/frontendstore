@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { RootState } from "./state/store";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/NavBar"
 import Footer from "./components/Footer";
@@ -12,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <RoutesSite />
+        <RoutesSite />
       <Footer />
     </BrowserRouter>
   );

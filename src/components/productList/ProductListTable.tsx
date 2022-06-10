@@ -1,4 +1,4 @@
-import "../tables.css";
+import "../styles/tables.css";
 
 export default function ProductListTable() {
     return (
