@@ -12,13 +12,13 @@
   }
   
   .nav {
-    background-color: #333;
+    background-color: #FC814A;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
   
   .site-title {
@@ -41,14 +41,6 @@
     align-items: center;
     padding: .25rem;
   }
-  
-  .nav li.active {
-    background-color: #555;
-  }
-  
-  .nav li:hover {
-    background-color: #777;
-  }
 
   .copyright {
     text-align: center;
@@ -61,4 +53,9 @@
     letter-spacing: 2px;
     border-top-width: 2px;
     font-size: 12px;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
   }
+
