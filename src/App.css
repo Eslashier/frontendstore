@@ -23,7 +23,7 @@ body {
   margin-right: auto;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);  
+  transform: translate(-50%, -50%);
 }
 
 .button4:hover {
@@ -38,4 +38,33 @@ body {
 
 .centering {
   height: 50px;
+}
+
+.button3 {
+  width: 33%;
+  background-color: #0a014f;
+  color: white;
+  padding: 14px 20px;
+  margin: 4px 0;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button3:hover {
+  background-color: #fc814a;
+  color: white;
+}
+
+.button3:active {
+  background-color: #0a014f;
+  box-shadow: 0 2px #666;
 }

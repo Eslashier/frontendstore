@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {RootState} from "../store";
 import {possibleStatus} from "../../configuration/possibleStatus"
 import {getAllProviders} from "../../actions/getAllProviders"
+import {createNewProvider} from "../../actions/createNewProvider"
 
 
 type providerType = {
@@ -42,6 +43,19 @@ const providerSlice = createSlice({
         builder.addCase(getAllProviders.rejected, (state, action)=>{
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong fetching the providers"
+            state.providers=[]
+        })
+        //POST BUILDERS
+        builder.addCase(createNewProvider.pending, (state, action)=>{
+            state.status = possibleStatus.PENDING;
+        })
+        builder.addCase(createNewProvider.fulfilled, (state, action)=>{
+            state.status = possibleStatus.COMPLETED;
+            state.providers.push(action.payload);
+        })
+        builder.addCase(createNewProvider.rejected, (state, action)=>{
+            state.status = possibleStatus.FAILED;
+            state.error = "Something went wrong posting a new provider";
             state.providers=[]
         })
     }

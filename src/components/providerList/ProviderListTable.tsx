@@ -32,7 +32,7 @@ const ProviderListTable: React.FunctionComponent<IProviderListProps> = () => {
                         <th>Provider</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>DNI</th>
+                        <th>Provider ID</th>
                     </tr>
                 </thead>
                         {!error && getProviders.map((provider) => <ProviderCreateTable key={provider.id} props={provider} />)}
