@@ -7,10 +7,11 @@
 
 #table td,
 #table th {
+    border: 1px solid #FFFAFB;
     padding: 8px;
 }
 
-#table tr:nth-child(even) {
+#table tbody tr:nth-child(even) {
     background-color: #FFFAFB;
 }
 
@@ -18,10 +19,15 @@
     background-color: #ddd;
 }
 
-#table th {
+#table thead {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #fc814a;
     color: white;
 }
+
+#table thead tr:hover {
+    background-color: #fc814a;
+}
+

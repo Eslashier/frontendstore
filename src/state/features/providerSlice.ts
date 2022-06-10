@@ -3,6 +3,7 @@ import {RootState} from "../store";
 import {possibleStatus} from "../../configuration/possibleStatus"
 import {getAllProviders} from "../../actions/getAllProviders"
 
+
 type providerType = {
     id: string,
     providerName: string,
@@ -49,4 +50,8 @@ const providerSlice = createSlice({
 export type { providerType }
 export type { initialStateType }
 export default providerSlice.reducer
+
+export const selectProvidersState = () => (state: RootState) => state.providers.providers
+export const selectProvidersStatus = () => (state: RootState) => state.providers.status
+export const selectProvidersFetchError = () => (state: RootState) => state.providers.error
 

@@ -1,8 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { providerType } from "../state/features/providerSlice";
+import {urlApi} from "../configuration/urlConfig"
 
 
-const getAllProvidersAPI = "http://localhost:8080/v1/storeApi/getAllProviders";
+const getAllProvidersAPI = urlApi+"/getAllProviders";
+
+
 
 export const getAllProviders = createAsyncThunk('getAllProvidersAPI', async () => {
     const response = await fetch(getAllProvidersAPI)
