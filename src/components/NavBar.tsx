@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../imgs/Logo.png'
+import logo from "../imgs/Logo.png"
 import "./stylesNavBar.css";
 
 export default function Navbar() {
@@ -9,8 +9,7 @@ export default function Navbar() {
         <img style={{height: 50}} src={logo}/>
       </Link>
       <ul>
-        <Link to="/ProviderList">Provider</Link>
-        <Link to="/ProviderAdd">Add a Provider</Link>
+        <Link to="/ProviderList">Providers</Link>
         <Link to="/ProductAdd">Add a Product</Link>
         <Link to="/ProductList">Product List</Link>
         <Link to="/ProductListAll">Product List 2</Link>
