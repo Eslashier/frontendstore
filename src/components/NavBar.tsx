@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import {useSelector} from "react-redux";
-
-interface INavbarProps {
-}
+import "./styles.css";
 
 export default function Navbar() {
   return (
