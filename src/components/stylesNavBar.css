@@ -12,8 +12,8 @@
   }
   
   .nav {
-    background-color: #FC814A;
-    color: white;
+    background-color: #FFFAFB;
+    color: #0a014f;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -42,6 +42,10 @@
     padding: .25rem;
   }
 
+  .nav a:hover {
+    color:#fc814a;
+  }
+
   .copyright {
     text-align: center;
     padding-top: 5px;
@@ -57,5 +61,31 @@
     left:0;
     bottom:0;
     right:0;
+  }
+
+  .nav button{
+    background-color: #0a014f;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .nav button {
+    transition-duration: 0.4s;
+  }
+
+  .nav button:hover {
+    background-color: #fc814a;
+    color: white;
+  }
+
+  .nav button:active {
+    background-color: #0a014f;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
   }
 
