@@ -3,6 +3,7 @@ import logo from "../imgs/Logo.png"
 import "./stylesNavBar.css";
 import { RootState } from '../state/store';
 import { useSelector } from "react-redux";
+import LogOut from './LogOut';
 
 export default function Navbar() {
   const { user } = useSelector((state: RootState) => state.logging)
@@ -20,7 +21,7 @@ export default function Navbar() {
           <Link to="/ProductListAll">Product List 2</Link>
           <Link to="/Bills">Bills</Link>
           <Link to="/Receipts">Receipts</Link>
-          <button className="logout">Log out</button>
+          <LogOut/>
         </ul>
       </nav>)}
     return(<nav className="nav">
