@@ -21,8 +21,8 @@ export default function RoutesSite() {
             <Route path='/Bills' element={<Bills />} />
             <Route path='/Welcome' element={<Welcome />} />
             <Route path='/ProductAdd' element={<ProductAdd />} />
-            <Route path='/ProductList' element={<ProductList />} />
-            <Route path='/ProductListAll' element={<ProductListAll />} />
+            <Route path='/NewOrder' element={<ProductList />} />
+            <Route path='/Inventory' element={<ProductListAll />} />
             <Route path='/ProviderAdd' element={<ProviderAdd />} />
             <Route path='/ProviderList' element={<ProviderList />} />
             <Route path='/Receipts' element={<Receipts />} />

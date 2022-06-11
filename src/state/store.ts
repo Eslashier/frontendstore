@@ -12,8 +12,8 @@ export const store = configureStore({
         logging: loggingReducer,
         providers: providerReducer,
         bills: billReducer,
-        Receipts: receiptReducer,
-        Products: productReducer
+        receipts: receiptReducer,
+        products: productReducer
     }
 })
 
