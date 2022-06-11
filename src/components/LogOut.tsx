@@ -17,7 +17,7 @@ const LogOut = () => {
 
         dispatch(logOutInReducer())
         
-        navigate("/LogIn")
+        navigate("/")
     }
 
     return (
