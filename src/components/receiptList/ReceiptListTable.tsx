@@ -2,48 +2,45 @@ import React, { useEffect } from 'react';
 import "../styles/tables.css";
 import { useAppDispatch } from "../../state/store"
 import { possibleStatus } from "../../configuration/possibleStatus"
-import { selectProductsState, selectProductsStatus, selectProductsFetchError } from "../../state/features/productSlice"
-import { getAllProducts } from "../../actions/Product/getAllProducts"
+import { selectReceiptsState, selectReceiptsStatus, selectReceiptsFetchError } from "../../state/features/receiptSlice"
+import { getAllReceipts } from "../../actions/Receipt/getAllReceipts"
 import { useSelector } from 'react-redux';
-import ProductCreateTable from "./ReceiptCreateTable"
+import ReceiptCreateTable from "./ReceiptCreateTable"
 
-interface IProductListProps {
+interface IReceiptListProps {
 }
 
-const ProductListTable: React.FunctionComponent<IProductListProps> = () => {
+const ReceiptListTable: React.FunctionComponent<IReceiptListProps> = () => {
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (status === possibleStatus.IDLE) {
-            dispatch(getAllProducts())
+            dispatch(getAllReceipts())
         }
     }, [dispatch])
 
-    const getProducts = useSelector(selectProductsState())
-    const status = useSelector(selectProductsStatus())
-    const error = useSelector(selectProductsFetchError())
+    const getReceipts = useSelector(selectReceiptsState())
+    const status = useSelector(selectReceiptsStatus())
+    const error = useSelector(selectReceiptsFetchError())
 
     return (
         <div>
             <table id="table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Min. Stock</th>
-                        <th>Max. Stock</th>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Product ID</th>
+                        <th>Product name</th>
+                        <th>Quantity</th>
                         <th>Provider</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
-                        {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
+                        {!error && getReceipts.map((receipt) => <ReceiptCreateTable key={receipt.id} props={receipt} />)}
             </table>           
         </div>
     )
 }
 
-export default ProductListTable;
+export default ReceiptListTable;

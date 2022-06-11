@@ -1,27 +1,24 @@
 import "../styles/tables.css";
-import {productType} from '../../state/features/productSlice'
+import {receiptType} from '../../state/features/receiptSlice'
 
-type productPropsType = {
-    props: productType
+type receiptPropsType = {
+    props: receiptType
 }
 
-const Product: React.FunctionComponent<productPropsType> = ({props}) => {
+const Receipt: React.FunctionComponent<receiptPropsType> = ({props}) => {
 
     return (
         <tbody>
             <tr>
-                <td>{props.name}</td>
-                <td>{props.description}</td>
-                <td>{props.price}</td>
-                <td>{props.stock}</td>
-                <td>{props.minimumStock}</td>
-                <td>{props.maximumStock}</td>
-                <td>{props.provider.providerName}</td>
-                <td><button className="edit">Edit</button></td>
-                <td><button className="delete">Delete</button></td>
+                <td>{props.id}</td>
+                <td>{props.date}</td>
+                <td>{props.product.id}</td>
+                <td>{props.product.name}</td>
+                <td>{props.units}</td>
+                <td>{props.product.provider.providerName}</td>
             </tr>
         </tbody>
     )
 };
 
-export default Product;
+export default Receipt;

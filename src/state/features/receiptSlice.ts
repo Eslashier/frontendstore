@@ -2,15 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllReceipts } from "../../actions/Receipt/getAllReceipts"
-import { providerType } from "./providerSlice";
+import { productType } from "./productSlice";
 
 type receiptType = {
     id: string,
-    providerName: string,
     units: number,
-    productId: string,
+    product: productType,
     date: string,
-    provider: providerType,
 }
 
 interface initialStateType {
