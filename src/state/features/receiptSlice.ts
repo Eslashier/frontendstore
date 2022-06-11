@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllReceipts } from "../../actions/Receipt/getAllReceipts"
 import { productType } from "./productSlice";
+import {createNewReceipt } from "../../actions/Receipt/createNewReceipt"
 
 type receiptType = {
     id: string,
@@ -40,6 +41,19 @@ const receiptSlice = createSlice({
         builder.addCase(getAllReceipts.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong fetching the receipts"
+            state.receipts = []
+        })
+        //POST BUILDERS
+        builder.addCase(createNewReceipt.pending, (state, action) => {
+            state.status = possibleStatus.PENDING;
+        })
+        builder.addCase(createNewReceipt.fulfilled, (state, action) => {
+            state.status = possibleStatus.COMPLETED;
+            state.receipts.push(action.payload);
+        })
+        builder.addCase(createNewReceipt.rejected, (state, action) => {
+            state.status = possibleStatus.FAILED;
+            state.error = "Something went wrong posting a new receipts";
             state.receipts = []
         })
     }

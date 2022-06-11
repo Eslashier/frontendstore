@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllBills } from "../../actions/Bill/getAllBills"
 import { productType } from "./productSlice";
+import { createNewBill } from "../../actions/Bill/createNewBill"
 
 type billType = {
     id: string,
@@ -42,6 +43,19 @@ const billSlice = createSlice({
         builder.addCase(getAllBills.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong fetching the bills"
+            state.bills = []
+        })
+        //POST BUILDERS
+        builder.addCase(createNewBill.pending, (state, action) => {
+            state.status = possibleStatus.PENDING;
+        })
+        builder.addCase(createNewBill.fulfilled, (state, action) => {
+            state.status = possibleStatus.COMPLETED;
+            state.bills.push(action.payload);
+        })
+        builder.addCase(createNewBill.rejected, (state, action) => {
+            state.status = possibleStatus.FAILED;
+            state.error = "Something went wrong posting a new provider";
             state.bills = []
         })
     }
