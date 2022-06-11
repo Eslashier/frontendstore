@@ -1,56 +1,57 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
-import { getAllBills } from "../../actions/Bill/getAllBills"
+import { getAllReceipts } from "../../actions/Receipt/getAllReceipts"
+import { providerType } from "./providerSlice";
 
-type billType = {
+type receiptType = {
     id: string,
+    providerName: string,
+    units: number,
+    productId: string,
     date: string,
-    clientName: string,
-    salesmanName: string,
-    productListSale: [productType],
-    totalSale: number,
+    provider: providerType,
 }
 
 interface initialStateType {
-    bills: billType[],
+    receipts: receiptType[],
     status: possibleStatus,
     error: string | null,
 }
 
 const initialState: initialStateType = {
-    bills: [],
+    receipts: [],
     status: possibleStatus.IDLE,
     error: null,
 }
 
-const billSlice = createSlice({
-    name: 'bill',
+const receiptSlice = createSlice({
+    name: 'receipt',
     initialState,
     reducers: {
     },
     extraReducers: (builder) => {
         //GET BUILDERS
-        builder.addCase(getAllBills.pending, (state, action) => {
+        builder.addCase(getAllReceipts.pending, (state, action) => {
             state.status = possibleStatus.PENDING;
         })
-        builder.addCase(getAllBills.fulfilled, (state, action) => {
+        builder.addCase(getAllReceipts.fulfilled, (state, action) => {
             state.status = possibleStatus.COMPLETED;
-            state.bills = action.payload;
+            state.receipts = action.payload;
         })
-        builder.addCase(getAllBills.rejected, (state, action) => {
+        builder.addCase(getAllReceipts.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
-            state.error = "Something went wrong fetching the bills"
-            state.bills = []
+            state.error = "Something went wrong fetching the receipts"
+            state.receipts = []
         })
     }
 })
 
-export type { billType }
+export type { receiptType }
 export type { initialStateType }
-export default billSlice.reducer
+export default receiptSlice.reducer
 
-export const selectBillsState = () => (state: RootState) => state.bills.providers
-export const selectBillsStatus = () => (state: RootState) => state.bills.status
-export const selectBillsFetchError = () => (state: RootState) => state.bills.error
+export const selectReceiptsState = () => (state: RootState) => state.receipts.providers
+export const selectReceiptsStatus = () => (state: RootState) => state.receipts.status
+export const selectReceiptsFetchError = () => (state: RootState) => state.receipts.error
 
