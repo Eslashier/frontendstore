@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllBills } from "../../actions/Bill/getAllBills"
+import { productType } from "./productSlice";
 
 type billType = {
     id: string,
@@ -50,7 +51,7 @@ export type { billType }
 export type { initialStateType }
 export default billSlice.reducer
 
-export const selectBillsState = () => (state: RootState) => state.bills.providers
+export const selectBillsState = () => (state: RootState) => state.bills.bills
 export const selectBillsStatus = () => (state: RootState) => state.bills.status
 export const selectBillsFetchError = () => (state: RootState) => state.bills.error
 

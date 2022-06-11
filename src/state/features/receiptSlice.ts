@@ -51,7 +51,7 @@ export type { receiptType }
 export type { initialStateType }
 export default receiptSlice.reducer
 
-export const selectReceiptsState = () => (state: RootState) => state.receipts.providers
+export const selectReceiptsState = () => (state: RootState) => state.receipts.receipts
 export const selectReceiptsStatus = () => (state: RootState) => state.receipts.status
 export const selectReceiptsFetchError = () => (state: RootState) => state.receipts.error
 

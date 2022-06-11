@@ -53,7 +53,7 @@ export type { productType }
 export type { initialStateType }
 export default productSlice.reducer
 
-export const selectProductsState = () => (state: RootState) => state.products.providers
+export const selectProductsState = () => (state: RootState) => state.products.products
 export const selectProductsStatus = () => (state: RootState) => state.products.status
 export const selectProductsFetchError = () => (state: RootState) => state.products.error
 
