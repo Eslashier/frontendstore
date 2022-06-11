@@ -1,12 +1,11 @@
 import "../styles/tables.css";
-import {billType} from '../../state/features/billSlice'
+import { billType } from '../../state/features/billSlice'
 
 type billPropsType = {
     props: billType
 }
 
-const Bill: React.FunctionComponent<billPropsType> = ({props}) => {
-
+const Bill: React.FunctionComponent<billPropsType> = ({ props }) => {
     return (
         <tbody>
             <tr>
@@ -14,12 +13,13 @@ const Bill: React.FunctionComponent<billPropsType> = ({props}) => {
                 <td>{props.date}</td>
                 <td>{props.clientName}</td>
                 <td>{props.salesmanName}</td>
-                <td><table>{props.productListSale.map(product =>{
-                    return <tr>
-                        <td>{product.name}</td>
-                        <td>{product.sold}</td>
+                <td><table>{props.productListSale.map(product => {
+                        return <tr>
+                            <td>{product.name}</td>
+                            <td>{product.sold}</td>
                         </tr>
-                })}</table></td>
+                })}
+                </table></td>
                 <td>{props.totalSale}</td>
             </tr>
         </tbody>

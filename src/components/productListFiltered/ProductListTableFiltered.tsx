@@ -39,9 +39,21 @@ const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () 
                         <th>Quantity</th>
                     </tr>
                 </thead>
-                        {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
-            </table>           
+                {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
+            </table>
+
+            <form className="form" id="addProduct">
+                <label >Customer Name</label>
+                <input type="text" id="name" placeholder="Customer name..." />
+                <label >Employee Name</label>
+                <input type="text" id="description" placeholder="Employee name..." />
+            </form>
+
+            <div className='centering'>
+                <button className='button4'>Create order</button>
+            </div>
         </div>
+
     )
 }
 
