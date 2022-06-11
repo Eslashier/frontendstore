@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
-import { getAllProviders } from "../../actions/getAllProviders"
-import { createNewProvider } from "../../actions/createNewProvider"
+import { getAllProviders } from "../../actions/Provider/getAllProviders"
+import { createNewProvider } from "../../actions/Provider/createNewProvider"
 
 
 type providerType = {

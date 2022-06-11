@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { providerType } from "../state/features/providerSlice";
-import { urlApi } from "../configuration/urlConfig"
+import { providerType } from "../../state/features/providerSlice";
+import { urlApi } from "../../configuration/urlConfig"
 
 const getAllProvidersAPI = urlApi + "/getAllProviders";
 

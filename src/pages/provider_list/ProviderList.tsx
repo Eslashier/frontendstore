@@ -7,7 +7,7 @@ const ProviderList = () => {
   let navigate =useNavigate();
   return (
     <div className='main_content'>
-      <h1>Provider list</h1>
+      <h1>Providers</h1>
       <ProviderListTable/>
       <br />
       <br />

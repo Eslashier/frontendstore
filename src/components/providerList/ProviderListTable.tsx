@@ -3,7 +3,7 @@ import "../styles/tables.css";
 import { useAppDispatch } from "../../state/store"
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { selectProvidersState, selectProvidersStatus, selectProvidersFetchError } from "../../state/features/providerSlice"
-import { getAllProviders } from "../../actions/getAllProviders"
+import { getAllProviders } from "../../actions/Provider/getAllProviders"
 import { useSelector } from 'react-redux';
 import ProviderCreateTable from "./ProviderCreateTable"
 

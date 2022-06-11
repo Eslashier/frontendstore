@@ -2,7 +2,7 @@ import "../styles/forms.css";
 import React, { useState } from 'react';
 import { useAppDispatch } from "../../state/store"
 import { providerType } from "../../state/features/providerSlice"
-import {createNewProvider} from "../../actions/createNewProvider"
+import {createNewProvider} from "../../actions/Provider/createNewProvider"
 import { nanoid } from '@reduxjs/toolkit';
 import { useNavigate } from "react-router-dom";
 
