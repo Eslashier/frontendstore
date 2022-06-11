@@ -1,56 +1,59 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
-import { getAllBills } from "../../actions/Bill/getAllBills"
+import { getAllProducts } from "../../actions/Product/getAllProducts"
+import { providerType } from "./providerSlice";
 
-type billType = {
+type productType= {
     id: string,
-    date: string,
-    clientName: string,
-    salesmanName: string,
-    productListSale: [productType],
-    totalSale: number,
+    name: string,
+    description: string,
+    price: number,
+    stock: number,
+    minimumStock: number,
+    maximumStock: number,
+    provider: providerType;
 }
 
 interface initialStateType {
-    bills: billType[],
+    products: productType[],
     status: possibleStatus,
     error: string | null,
 }
 
 const initialState: initialStateType = {
-    bills: [],
+    products: [],
     status: possibleStatus.IDLE,
     error: null,
 }
 
-const billSlice = createSlice({
-    name: 'bill',
+const productSlice = createSlice({
+    name: 'product',
     initialState,
     reducers: {
     },
     extraReducers: (builder) => {
         //GET BUILDERS
-        builder.addCase(getAllBills.pending, (state, action) => {
+        builder.addCase(getAllProducts.pending, (state, action) => {
             state.status = possibleStatus.PENDING;
         })
-        builder.addCase(getAllBills.fulfilled, (state, action) => {
+        builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.status = possibleStatus.COMPLETED;
-            state.bills = action.payload;
+            state.products = action.payload;
         })
-        builder.addCase(getAllBills.rejected, (state, action) => {
+        builder.addCase(getAllProducts.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
-            state.error = "Something went wrong fetching the bills"
-            state.bills = []
+            state.error = "Something went wrong fetching the products"
+            state.products = []
         })
     }
 })
 
-export type { billType }
+export type { productType }
 export type { initialStateType }
-export default billSlice.reducer
+export default productSlice.reducer
 
-export const selectBillsState = () => (state: RootState) => state.bills.providers
-export const selectBillsStatus = () => (state: RootState) => state.bills.status
-export const selectBillsFetchError = () => (state: RootState) => state.bills.error
+export const selectProductsState = () => (state: RootState) => state.products.providers
+export const selectProductsStatus = () => (state: RootState) => state.products.status
+export const selectProductsFetchError = () => (state: RootState) => state.products.error
 
