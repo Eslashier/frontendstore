@@ -1,27 +1,29 @@
 import "../styles/tables.css";
-import {productType} from '../../state/features/productSlice'
+import {billType} from '../../state/features/billSlice'
 
-type productPropsType = {
-    props: productType
+type billPropsType = {
+    props: billType
 }
 
-const Product: React.FunctionComponent<productPropsType> = ({props}) => {
+const Bill: React.FunctionComponent<billPropsType> = ({props}) => {
 
     return (
         <tbody>
             <tr>
-                <td>{props.name}</td>
-                <td>{props.description}</td>
-                <td>{props.price}</td>
-                <td>{props.stock}</td>
-                <td>{props.minimumStock}</td>
-                <td>{props.maximumStock}</td>
-                <td>{props.provider.providerName}</td>
-                <td><button className="edit">Edit</button></td>
-                <td><button className="delete">Delete</button></td>
+                <td>{props.id}</td>
+                <td>{props.date}</td>
+                <td>{props.clientName}</td>
+                <td>{props.salesmanName}</td>
+                <td><table>{props.productListSale.map(product =>{
+                    return <tr>
+                        <td>{product.name}</td>
+                        <td>{product.sold}</td>
+                        </tr>
+                })}</table></td>
+                <td>{props.totalSale}</td>
             </tr>
         </tbody>
     )
 };
 
-export default Product;
+export default Bill;

@@ -2,48 +2,45 @@ import React, { useEffect } from 'react';
 import "../styles/tables.css";
 import { useAppDispatch } from "../../state/store"
 import { possibleStatus } from "../../configuration/possibleStatus"
-import { selectProductsState, selectProductsStatus, selectProductsFetchError } from "../../state/features/productSlice"
-import { getAllProducts } from "../../actions/Product/getAllProducts"
+import { selectBillsState, selectBillsStatus, selectBillsFetchError } from "../../state/features/billSlice"
+import { getAllBills } from "../../actions/Bill/getAllBills"
 import { useSelector } from 'react-redux';
-import ProductCreateTable from "./BillCreateTable"
+import BillCreateTable from "./BillCreateTable"
 
-interface IProductListProps {
+interface IBillListProps {
 }
 
-const ProductListTable: React.FunctionComponent<IProductListProps> = () => {
+const BillListTable: React.FunctionComponent<IBillListProps> = () => {
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (status === possibleStatus.IDLE) {
-            dispatch(getAllProducts())
+            dispatch(getAllBills())
         }
     }, [dispatch])
 
-    const getProducts = useSelector(selectProductsState())
-    const status = useSelector(selectProductsStatus())
-    const error = useSelector(selectProductsFetchError())
+    const getBills = useSelector(selectBillsState())
+    const status = useSelector(selectBillsStatus())
+    const error = useSelector(selectBillsFetchError())
 
     return (
         <div>
             <table id="table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Min. Stock</th>
-                        <th>Max. Stock</th>
-                        <th>Provider</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Seller</th>
+                        <th>Product/Qty</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
-                        {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
+                        {!error && getBills.map((bill) => <BillCreateTable key={bill.id} props={bill} />)}
             </table>           
         </div>
     )
 }
 
-export default ProductListTable;
+export default BillListTable;

@@ -9,6 +9,7 @@ type productType= {
     name: string,
     description: string,
     price: number,
+    sold: number,
     stock: number,
     minimumStock: number,
     maximumStock: number,
