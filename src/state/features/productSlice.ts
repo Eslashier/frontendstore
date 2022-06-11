@@ -4,6 +4,7 @@ import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllProducts } from "../../actions/Product/getAllProducts"
 import { createNewProduct } from "../../actions/Product/createNewProduct"
 import { providerType } from "./providerSlice";
+import { deleteProduct } from "../../actions/Product/deleteProduct"
 
 type productType= {
     id: string,
@@ -58,8 +59,23 @@ const productSlice = createSlice({
         })
         builder.addCase(createNewProduct.rejected, (state, action) => {
             state.status = possibleStatus.FAILED;
-            state.error = "Something went wrong posting a new provider";
+            state.error = "Something went wrong posting a new product";
             state.products = []
+        })
+        //DELETE BUILDERS
+        builder.addCase(deleteProduct.pending, (state, action) => {
+            state.status = possibleStatus.PENDING;
+        })
+        builder.addCase(deleteProduct.fulfilled, (state, action) => {
+            state.status = possibleStatus.COMPLETED;
+            if (action.payload.deleted) {
+                state.products = state.products.filter((product) => 
+                product.id !== action.payload.productId)
+            }
+        })
+        builder.addCase(deleteProduct.rejected, (state, action) => {
+            state.status = possibleStatus.FAILED;
+            state.error = "Something went wrong deleting the product provider";
         })
     }
 })

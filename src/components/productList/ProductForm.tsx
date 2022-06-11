@@ -1,80 +1,91 @@
 import "../styles/forms.css";
-import React, { useState } from 'react';
-import { useAppDispatch } from "../../state/store"
-import { providerType } from "../../state/features/providerSlice"
-import {createNewProvider} from "../../actions/Provider/createNewProvider"
+import "../../App.css"
+import React, { useState, useEffect } from 'react';
+import { useAppDispatch } from "../../state/store";
+import { providerType, selectProvidersState } from "../../state/features/providerSlice";
+import { productType } from "../../state/features/productSlice";
+import { useSelector } from 'react-redux';
+import { possibleStatus } from "../../configuration/possibleStatus"
+import { getAllProviders } from "../../actions/Provider/getAllProviders";
+import { createNewProduct } from "../../actions/Product/createNewProduct";
 import { nanoid } from '@reduxjs/toolkit';
 import { useNavigate } from "react-router-dom";
 
-// interface IProviderFormProps {
-// }
+interface IProductFormProps {
+}
 
-// const ProviderForm: React.FunctionComponent<IProviderFormProps> = (props) => {
-//     const [providerName, setProviderName] = useState('')
-//     const [phone, setPhone] = useState('')
-//     const [email, setEmail] = useState('')
-//     const [passport, setPassport] = useState('')
+const ProductForm: React.FunctionComponent<IProductFormProps> = (props) => {
 
-//     const dispatch = useAppDispatch()
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState(0)
+    const [minimumStock, setMinimumStock] = useState(0)
+    const [maximumStock, setMaximumStock] = useState(0)
+    const [provider, setProvider] = useState({} as providerType)  
 
-//     const onAdd = async (e: React.FormEvent<HTMLFormElement>) => {
-//         e.preventDefault()
+    const dispatch = useAppDispatch()
 
-//         if (providerName && phone && email && passport) {
-//             const newProvider: providerType = { id: nanoid(), providerName, phone, email, passport }
-//             dispatch(createNewProvider(newProvider))
-//             setProviderName('')
-//             setPhone('')
-//             setEmail('')
-//             setPassport('')
-//         }
-//     }
+    let navigate =useNavigate();
 
-//     let navigate =useNavigate();
+    useEffect(() => {dispatch(getAllProviders())}, [dispatch])
 
-//     return (
-//         <div>
-//             <form className="form" id="addProvider" onSubmit={(e) => {onAdd(e); navigate("/ProviderList")}}>
-//                 <label >Provider Name</label>
-//                 <input type="text" id="providerName" value={providerName} placeholder="Provider name..." onChange={(e) => setProviderName(e.target.value)}/>
-//                 <label >Phone number</label>
-//                 <input type="text" id="phone" value={phone} placeholder="Provider phone number..." onChange={(e) => setPhone(e.target.value)}/>
-//                 <label >E-mail</label>
-//                 <input type="text" id="email" value={email} placeholder="Provider e-mail..." onChange={(e) => setEmail(e.target.value)}/>
-//                 <label >Provider ID </label>
-//                 <input type="text" id="passport" value={passport} placeholder="Provider id..." onChange={(e) => setPassport(e.target.value)}/>
-//                 <input type="submit" value="Submit" />
-//             </form>
-//         </div>
-//     )
-// }
+    const getProviders = useSelector(selectProvidersState())
 
-// export default ProviderForm
+    const onAdd = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
 
-export default function AddProduct() {
+        if (name && description && price && minimumStock && maximumStock && provider && (price > 0 && minimumStock >= 0) && (minimumStock < maximumStock)) {
+            const addProduct: productType = {
+                id: nanoid(),
+                name: name,
+                description: description,
+                price: price,
+                sold: 0,
+                stock: 0,
+                minimumStock: minimumStock,
+                maximumStock: maximumStock,
+                provider: provider
+            }
+            dispatch(createNewProduct(addProduct))
+            navigate("/Inventory")
+        } else {
+            alert('All the fields must be provided, maximum stock must be greater than minimum stock and values must be greater than zero')
+        }
+    }
+
+    const selectProviderOnList = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setProvider(getProviders.filter((providers) => providers.id === e.target.value)[0])
+    }
+
     return (
         <div>
-            <form className="form" id="addProduct">
+            <form className="form" id="addProduct" onSubmit={(e) => onAdd(e)}>
                 <label >Product name</label>
-                <input type="text" id="name" placeholder="Product name..."/>
+                <input type="text" id="name" placeholder="Product name..." onChange={(e) => setName(e.target.value)}/>
                 <label >Description</label>
-                <input type="text" id="description" placeholder="Product description..."/>
+                <input type="text" id="description" placeholder="Product description..." onChange={(e) => setDescription(e.target.value)}/>
                 <label >Price</label>
-                <input type="number" min="0" id="phone" placeholder="Product price..."/>
+                <input type="number" min="0" id="phone" placeholder="Product price..." onChange={(e) => setPrice(Number(e.target.value))}/>
                 <label >Alert of low stock</label>
-                <input type="number" min="0" id="phone" placeholder="Minimum stock..."/>
+                <input type="number" min="0" id="phone" placeholder="Minimum stock..." onChange={(e) => setMinimumStock(Number(e.target.value))}/>
                 <label >Maximum Stock</label>
-                <input type="number" min="0" id="phone" placeholder="Maximum stock..."/>
+                <input type="number" min="0" id="phone" placeholder="Maximum stock..." onChange={(e) => setMaximumStock(Number(e.target.value))}/>
                 <label >Select a provider</label>
-                <select id="providers" name="providers">
-                    <option />
-                    <option value="provider1">Provider 1</option>
-                    <option value="provider2">Provider 2</option>
-                    <option value="provider3">Provider 3</option>
-                    <option value="provider4">Provider 4</option>
+                <select id="providers" name="providers" onChange={(e) => selectProviderOnList(e)}>
+                    <option disabled selected> Select a provider </option>
+                    {getProviders.map((provider) => <option key={provider.id} value={provider.id}>
+                        {provider.providerName}
+                    </option>)}
                 </select>
                 <input type="submit" value="Submit" />
+                <br />
+                <br />
+                <button className='button3' onClick={() => navigate("/Inventory")}>Go Back</button><br />
             </form>
         </div>
     )
-  }
+}
+
+
+export default ProductForm;
+

@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../configuration/firebaseConfig";
 import GoogleLogIn from "./GoogleLogIn"
+import { useNavigate } from "react-router-dom";
 
 
 const LogIn: React.FunctionComponent = () => {
@@ -30,6 +31,8 @@ const LogIn: React.FunctionComponent = () => {
     }
   }
 
+  let navigate =useNavigate();
+
   return (
     <div>
       <h1>Log In</h1>
@@ -43,9 +46,12 @@ const LogIn: React.FunctionComponent = () => {
         <br />
         <br />
         <button className='button3' onClick={(e) => logInForm(e)}>Log In</button><br />
+        <br />        
       </form>
-      <br />
       <GoogleLogIn/>
+      <br />
+      <br />
+      <button className='button3' onClick={() => navigate("/SignUp")}>Sign Up</button><br />
     </div>
     
   );

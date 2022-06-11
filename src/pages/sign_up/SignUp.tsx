@@ -3,6 +3,7 @@ import "../../App.css"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../configuration/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 
 const SignIn = () => {
@@ -30,6 +31,8 @@ const SignIn = () => {
         }
     }
 
+    let navigate =useNavigate();
+
     return (
         <div>
             <h1>Sign Up</h1>
@@ -43,6 +46,9 @@ const SignIn = () => {
                 <br />
                 <br />
                 <button className='button3' onClick={(e) => signInForm(e)}>Sign up</button><br />
+                <br />
+                <br />
+                <button className='button3' onClick={() => navigate("/")}>Go Back</button><br />
             </form>
         </div>
     )

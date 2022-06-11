@@ -21,7 +21,12 @@ const ProviderForm: React.FunctionComponent<IProviderFormProps> = (props) => {
         e.preventDefault()
 
         if (providerName && phone && email && passport) {
-            const newProvider: providerType = { id: nanoid(), providerName, phone, email, passport }
+            const newProvider: providerType = { 
+                id: nanoid(), 
+                providerName, 
+                phone, 
+                email, 
+                passport }
             dispatch(createNewProvider(newProvider))
             setProviderName('')
             setPhone('')

@@ -4,7 +4,7 @@ import { urlApi } from "../../configuration/urlConfig"
 
 const deleteProductsAPI = urlApi + "/deleteProduct";
 
-export const deleteNewProduct = createAsyncThunk('deleteNewProduct', async (product: productType) => {
+export const deleteProduct = createAsyncThunk('deleteProduct', async (product: productType) => {
     const response = await fetch(`${deleteProductsAPI}/${product.id}`, {
         method: 'DELETE'
     })

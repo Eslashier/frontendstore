@@ -39,7 +39,7 @@ const GoogleLogIn: React.FunctionComponent = () => {
 
     return (
         <div>
-            <button className='button3' onClick={signInWithGoogleButton}>Log in with google</button>
+            <button className='button3' onClick={signInWithGoogleButton}>Log in / Sign up with google</button>
         </div>
     );
 };
