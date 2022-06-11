@@ -30,3 +30,95 @@
 #table thead tr:hover {
     background-color: #fc814a;
 }
+
+input[type=number],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add {
+    background-color: #0a014f;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.add {
+    transition-duration: 0.4s;
+}
+
+.add:hover {
+    background-color: #fc814a;
+    color: white;
+}
+
+.add:active {
+    background-color: #0a014f;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
+.edit {
+    background-color: #0a014f;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.edit {
+    transition-duration: 0.4s;
+}
+
+.edit:hover {
+    background-color: #fc814a;
+    color: white;
+}
+
+.edit:active {
+    background-color: #0a014f;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
+.delete {
+    background-color: #F20000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.delete {
+    transition-duration: 0.4s;
+}
+
+.delete:hover {
+    background-color: #fc814a;
+    color: white;
+}
+
+.delete:active {
+    background-color: #F20000;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}

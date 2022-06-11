@@ -36,6 +36,8 @@ const ProductListTable: React.FunctionComponent<IProductListProps> = () => {
                         <th>Min. Stock</th>
                         <th>Max. Stock</th>
                         <th>Provider</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                         {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}

@@ -5,12 +5,12 @@ import { possibleStatus } from "../../configuration/possibleStatus"
 import { selectProductsState, selectProductsStatus, selectProductsFetchError } from "../../state/features/productSlice"
 import { getAllProducts } from "../../actions/Product/getAllProducts"
 import { useSelector } from 'react-redux';
-import ProductCreateTable from "./ProductCreateTableFiltered"
+import ProductCreateTable from "./BillCreateTable"
 
 interface IProductListProps {
 }
 
-const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () => {
+const ProductListTable: React.FunctionComponent<IProductListProps> = () => {
 
     const dispatch = useAppDispatch();
 
@@ -36,7 +36,8 @@ const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () 
                         <th>Min. Stock</th>
                         <th>Max. Stock</th>
                         <th>Provider</th>
-                        <th>Quantity</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                         {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
@@ -45,4 +46,4 @@ const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () 
     )
 }
 
-export default ProductListTableFiltered;
+export default ProductListTable;

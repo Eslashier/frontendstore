@@ -20,6 +20,7 @@ const Product: React.FunctionComponent<productPropsType> = ({props}) => {
                 <td>{props.minimumStock}</td>
                 <td>{props.maximumStock}</td>
                 <td>{props.provider.providerName}</td>
+                <td><input type="number" min="0" max="100"/></td>
             </tr>
         </tbody>
     )

@@ -16,7 +16,6 @@ export default function Navbar() {
         </Link>
         <ul>
           <Link to="/ProviderList">Providers</Link>
-          <Link to="/ProductAdd">Add a Product</Link>
           <Link to="/NewOrder">New Order</Link>
           <Link to="/Inventory">Inventory</Link>
           <Link to="/Bills">Bills</Link>
