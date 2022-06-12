@@ -1,9 +1,16 @@
 import '../../App.css'
 import ProviderForm from '../../components/providerList/ProviderForm'
 import { useNavigate } from "react-router-dom";
+import { RootState } from '..//./../state/store';
+import { useSelector } from "react-redux";
+import { useEffect } from 'react';
 
 const AddProvider = () => {
-  let navigate = useNavigate();
+  const { user } = useSelector((state: RootState) => state.logging)
+  let navigate = useNavigate()
+
+  useEffect(() => {if (user === null) {navigate("/")}}, [])
+
   return (
     <div className='main_content'>
       <h1>Add a new provider</h1>
