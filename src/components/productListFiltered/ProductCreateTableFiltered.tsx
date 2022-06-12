@@ -29,6 +29,7 @@ const Product: React.FunctionComponent<productPropsType> = ({props}) => {
     if(props.stock===0){
         return <></>
     }
+
     return (
         <tbody>
             <tr>
