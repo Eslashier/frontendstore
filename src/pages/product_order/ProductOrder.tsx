@@ -8,11 +8,13 @@ import { billType } from '../../state/features/billSlice';
 import moment from 'moment';
 import { createNewBill } from '../../actions/Bill/createNewBill';
 import { nanoid } from '@reduxjs/toolkit';
+import { emptyProducts } from '../../state/features/orderSlice';
+import { productType } from '../../state/features/productSlice';
+import { updateProduct } from '../../actions/Product/updateProduct';
 
-const ProductList = () => {
+const ProductOrder = () => {
   const { user } = useSelector((state: RootState) => state.logging)
   let navigate = useNavigate()
-
   useEffect(() => { if (user === null) { navigate("/") } }, [])
 
   const order = useSelector((state: RootState) => state.order)
@@ -37,9 +39,37 @@ const ProductList = () => {
       }
 
       dispatch(createNewBill(addBill))
+      dispatch(emptyProducts())
       navigate("/NewOrder")
+
+      let productToUpdate = [...order.productListSale]
+
+      productToUpdate.map(product => {
+        const productUpdated: productType = {
+          id: product.id,
+          name: product.name,
+          description: product.description,
+          price: product.price,
+          sold: 0,
+          stock: product.stock-product.sold,
+          minimumStock: product.minimumStock,
+          maximumStock: product.maximumStock,
+          provider: product.provider,
+        }      
+
+        if(productUpdated.minimumStock<productUpdated.stock){
+          console.log(productUpdated.minimumStock)
+          console.log(productUpdated.stock)
+          alert('The item has reached the minimumStock please contact the provider')
+        }
+
+        dispatch(updateProduct(productUpdated))
+
+      })
+
+
     } else {
-      alert('All the fields must be provided, maximum stock must be greater than minimum stock and values must be greater than zero')
+      alert('All the fields must be provided')
     }
   }
 
@@ -68,4 +98,4 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default ProductOrder
