@@ -4,6 +4,7 @@ import SignUp from "../pages/sign_up/SignUp"
 import Bills from "../pages/bills/Bills";
 import Welcome from "../pages/welcome/welcome";
 import ProductAdd from "../pages/product_add/ProductAdd"
+import ProductEdit from "../pages/product_edit/ProductEdit"
 import ProductList from "../pages/product_list/ProductList"
 import ProductListAll from "../pages/product_list_all/ProductListAll"
 import ProviderAdd from "../pages/provider_add/ProviderAdd";
@@ -21,6 +22,7 @@ export default function RoutesSite() {
             <Route path='/Bills' element={<Bills />} />
             <Route path='/Welcome' element={<Welcome />} />
             <Route path='/ProductAdd' element={<ProductAdd />} />
+            <Route path='/ProductEdit' element={<ProductEdit />} />
             <Route path='/NewOrder' element={<ProductList />} />
             <Route path='/Inventory' element={<ProductListAll />} />
             <Route path='/ProviderAdd' element={<ProviderAdd />} />

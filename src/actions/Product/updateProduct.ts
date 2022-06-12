@@ -4,7 +4,7 @@ import { urlApi } from "../../configuration/urlConfig"
 
 const updateProductsAPI = urlApi + "/updateProduct";
 
-export const updateNewProduct = createAsyncThunk('updateProduct', async (product: productType) => {
+export const updateProduct = createAsyncThunk('updateProduct', async (product: productType) => {
     const response = await fetch(updateProductsAPI, {
         method: 'PUT',
         headers: {

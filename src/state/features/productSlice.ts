@@ -3,6 +3,7 @@ import { RootState } from "../store";
 import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllProducts } from "../../actions/Product/getAllProducts"
 import { createNewProduct } from "../../actions/Product/createNewProduct"
+import { updateProduct } from "../../actions/Product/updateProduct"
 import { providerType } from "./providerSlice";
 import { deleteProduct } from "../../actions/Product/deleteProduct"
 
@@ -61,6 +62,20 @@ const productSlice = createSlice({
             state.status = possibleStatus.FAILED;
             state.error = "Something went wrong posting a new product";
             state.products = []
+        })
+        //PUT BUILDERS
+        builder.addCase(updateProduct.pending, (state, action) => {
+            state.status = possibleStatus.PENDING
+        })
+        builder.addCase(updateProduct.fulfilled, (state, action) => {
+            state.status = possibleStatus.COMPLETED
+            let productUpdated = state.products.filter(product => product.id === action.payload.id)[0];
+            let positionProductUpdated = state.products.indexOf(productUpdated)
+            state.products[positionProductUpdated] = action.payload
+        })
+        builder.addCase(updateProduct.rejected, (state, action) => {
+            state.status = possibleStatus.FAILED
+            state.error = "Something went wrong while creatin a product"
         })
         //DELETE BUILDERS
         builder.addCase(deleteProduct.pending, (state, action) => {

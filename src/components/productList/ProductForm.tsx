@@ -5,7 +5,6 @@ import { useAppDispatch } from "../../state/store";
 import { providerType, selectProvidersState } from "../../state/features/providerSlice";
 import { productType } from "../../state/features/productSlice";
 import { useSelector } from 'react-redux';
-import { possibleStatus } from "../../configuration/possibleStatus"
 import { getAllProviders } from "../../actions/Provider/getAllProviders";
 import { createNewProduct } from "../../actions/Product/createNewProduct";
 import { nanoid } from '@reduxjs/toolkit';
@@ -29,8 +28,6 @@ const ProductForm: React.FunctionComponent<IProductFormProps> = (props) => {
 
     useEffect(() => {dispatch(getAllProviders())}, [dispatch])
 
-    const getProviders = useSelector(selectProvidersState())
-
     const onAdd = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -52,6 +49,8 @@ const ProductForm: React.FunctionComponent<IProductFormProps> = (props) => {
             alert('All the fields must be provided, maximum stock must be greater than minimum stock and values must be greater than zero')
         }
     }
+
+    const getProviders = useSelector(selectProvidersState())
 
     const selectProviderOnList = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setProvider(getProviders.filter((providers) => providers.id === e.target.value)[0])
