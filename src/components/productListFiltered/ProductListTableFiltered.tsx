@@ -43,9 +43,6 @@ const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () 
                 </thead>
                 {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
             </table>
-            <div className='centering'>
-                <button className='button4' onClick={() => navigate("/Order")}>Create order</button>
-            </div>
         </div>
     )
 }

@@ -15,7 +15,10 @@ const ProductList = () => {
     
     <div className='main_content'>
       <h1>Create a new order</h1>
-      <ProductListTableFiltered />
+      <form id="table" onSubmit={() => navigate("/Order")}>
+      <ProductListTableFiltered/>
+      <input className="goToOrder" id="submit" type="submit" value="Submit" />
+      </form>
     </div>
   )
 }
