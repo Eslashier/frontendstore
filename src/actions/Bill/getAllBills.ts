@@ -6,7 +6,6 @@ const getAllBillsAPI = urlApi + "/getAllBills";
 
 export const getAllBills = createAsyncThunk('getAllBills', async () => {
     const response = await fetch(getAllBillsAPI)
-    console.log("fetch done")
     return (await response.json() as billType[])
 })
 

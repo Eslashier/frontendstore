@@ -6,7 +6,6 @@ const getAllProductsAPI = urlApi + "/getAllProducts";
 
 export const getAllProducts = createAsyncThunk('getAllProducts', async () => {
     const response = await fetch(getAllProductsAPI)
-    console.log("fetch done")
     return (await response.json() as productType[])
 })
 
