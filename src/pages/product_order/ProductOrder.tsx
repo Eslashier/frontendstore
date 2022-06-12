@@ -29,7 +29,7 @@ const ProductOrder = () => {
     e.preventDefault()
 
     if (clientName && salesmanName && total != 0) {
-      const addBill: billType= {
+      const addBill: billType = {
         id: nanoid(),
         date: moment(new Date()).format("MM/DD/YYYY hh:mm:ss"),
         clientName: clientName,
@@ -51,13 +51,13 @@ const ProductOrder = () => {
           description: product.description,
           price: product.price,
           sold: 0,
-          stock: product.stock-product.sold,
+          stock: product.stock - product.sold,
           minimumStock: product.minimumStock,
           maximumStock: product.maximumStock,
           provider: product.provider,
-        }      
+        }
 
-        if(productUpdated.minimumStock<productUpdated.stock){
+        if (productUpdated.minimumStock > productUpdated.stock) {
           console.log(productUpdated.minimumStock)
           console.log(productUpdated.stock)
           alert('The item has reached the minimumStock please contact the provider')
@@ -66,7 +66,6 @@ const ProductOrder = () => {
         dispatch(updateProduct(productUpdated))
 
       })
-
 
     } else {
       alert('All the fields must be provided')
@@ -89,10 +88,13 @@ const ProductOrder = () => {
         <label >Total</label>
         <input type="number" id="total" value={total} />
         <label >Customer Name</label>
-        <input type="text" id="name" placeholder="Customer name..." onChange={(e) => setClientName(e.target.value)}/>
+        <input type="text" id="name" placeholder="Customer name..." onChange={(e) => setClientName(e.target.value)} />
         <label >Employee Name</label>
-        <input type="text" id="description" placeholder="Employee name..." onChange={(e) => setSalesmanName(e.target.value)}/>
+        <input type="text" id="description" placeholder="Employee name..." onChange={(e) => setSalesmanName(e.target.value)} />
         <input type="submit" value="Order" />
+        <br />
+        <br />
+        <button className='button3' onClick={() => {navigate("/NewOrder");dispatch(emptyProducts())}}>Go Back</button><br />
       </form>
     </div>
   )
