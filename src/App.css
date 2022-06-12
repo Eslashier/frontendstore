@@ -24,16 +24,19 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor:pointer;
 }
 
 .button4:hover {
   background-color: #0a014f;
   color: white;
+  cursor:pointer;
 }
 
 .button4:active {
   background-color: #fc814a;
   box-shadow: 0 2px #666;
+  cursor:pointer;
 }
 
 .centering {
@@ -57,16 +60,19 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor:pointer;
 }
 
 .button3:hover {
   background-color: #fc814a;
   color: white;
+  cursor:pointer;
 }
 
 .button3:active {
   background-color: #0a014f;
   box-shadow: 0 2px #666;
+  cursor:pointer;
 }
 
 form {
@@ -79,4 +85,33 @@ form {
   width: 33%;
   margin-left: auto;
   margin-right: auto;
+}
+
+ul {
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+}
+
+.divUrls{
+  align-items: center;
+  text-align: center;
+  margin:auto;
+  width: 50%; 
+}
+
+a {
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+  color:#fc814a
 }

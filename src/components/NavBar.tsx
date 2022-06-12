@@ -11,8 +11,8 @@ export default function Navbar() {
     if(user!==null){
       return(
       <nav className="nav">
-        <Link to="/" className="site-title">
-          <img style={{height: 50}} src={logo}/>
+        <Link to="/Welcome" className="site-title">
+          <img className="hsLogo" src={logo}/>
         </Link>
         <ul>
           <Link to="/ProviderList">Providers</Link>
