@@ -8,7 +8,7 @@ import { billType } from '../../state/features/billSlice';
 import moment from 'moment';
 import { createNewBill } from '../../actions/Bill/createNewBill';
 import { nanoid } from '@reduxjs/toolkit';
-import { emptyProducts } from '../../state/features/orderSlice';
+import { addProduct, emptyProducts, orderType } from '../../state/features/orderSlice';
 import { productType } from '../../state/features/productSlice';
 import { updateProduct } from '../../actions/Product/updateProduct';
 
@@ -18,7 +18,23 @@ const ProductOrder = () => {
   useEffect(() => { if (user === null) { navigate("/") } }, [])
 
   const order = useSelector((state: RootState) => state.order)
-  let total = order.productListSale.map(product => product.price * product.sold).reduce((a, b) => a + b, 0)
+
+  const auxState: orderType = {
+    productListSale: []
+}
+
+  let test = [...order.productListSale]
+
+  test.reduceRight((acc, obj, i) => {
+    acc[obj.id]? test.splice(i, 1) : acc[obj.id] = true;
+    return acc;
+  }, Object.create(null));
+
+  test.map(object =>
+    auxState.productListSale.push(object))
+  
+
+  let total = auxState.productListSale.map(product => product.price * product.sold).reduce((a, b) => a + b, 0)
 
   const [clientName, setClientName] = useState('')
   const [salesmanName, setSalesmanName] = useState('')
@@ -34,7 +50,7 @@ const ProductOrder = () => {
         date: moment(new Date()).format("MM/DD/YYYY hh:mm:ss"),
         clientName: clientName,
         salesmanName: salesmanName,
-        productListSale: order.productListSale,
+        productListSale: auxState.productListSale,
         totalSale: total,
       }
 
@@ -42,8 +58,8 @@ const ProductOrder = () => {
       dispatch(emptyProducts())
       navigate("/NewOrder")
 
-      let productToUpdate = [...order.productListSale]
-
+      let productToUpdate = [...auxState.productListSale]
+ 
       productToUpdate.map(product => {
         const productUpdated: productType = {
           id: product.id,
@@ -82,7 +98,7 @@ const ProductOrder = () => {
             <th>Quantity</th>
           </tr>
         </thead>
-        {<ProductOrderTable props={order} />}
+        {<ProductOrderTable props={auxState} />}
       </table>
       <form className="form" id="addProduct" onSubmit={(e) => onOrder(e)}>
         <label >Total</label>
