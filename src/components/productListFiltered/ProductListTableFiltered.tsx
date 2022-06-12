@@ -6,12 +6,14 @@ import { selectProductsState, selectProductsStatus, selectProductsFetchError } f
 import { getAllProducts } from "../../actions/Product/getAllProducts"
 import { useSelector } from 'react-redux';
 import ProductCreateTable from "./ProductCreateTableFiltered"
+import { useNavigate } from "react-router-dom";
 
 interface IProductListProps {
 }
 
 const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () => {
 
+    let navigate =useNavigate();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -41,19 +43,10 @@ const ProductListTableFiltered: React.FunctionComponent<IProductListProps> = () 
                 </thead>
                 {!error && getProducts.map((product) => <ProductCreateTable key={product.id} props={product} />)}
             </table>
-
-            <form className="form" id="addProduct">
-                <label >Customer Name</label>
-                <input type="text" id="name" placeholder="Customer name..." />
-                <label >Employee Name</label>
-                <input type="text" id="description" placeholder="Employee name..." />
-            </form>
-
             <div className='centering'>
-                <button className='button4'>Create order</button>
+                <button className='button4' onClick={() => navigate("/Order")}>Create order</button>
             </div>
         </div>
-
     )
 }
 

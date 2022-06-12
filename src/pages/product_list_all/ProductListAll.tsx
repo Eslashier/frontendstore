@@ -4,7 +4,6 @@ import ProductListTable from '../../components/productList/ProductListTable'
 import { RootState } from '..//./../state/store';
 import { useSelector } from "react-redux";
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ProductListAll = () => {
   const { user } = useSelector((state: RootState) => state.logging)
