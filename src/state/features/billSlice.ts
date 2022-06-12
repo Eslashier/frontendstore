@@ -10,7 +10,7 @@ type billType = {
     date: string,
     clientName: string,
     salesmanName: string,
-    productListSale: [productType],
+    productListSale: productType[],
     totalSale: number,
 }
 
