@@ -30,7 +30,7 @@ const ProviderListTable: React.FunctionComponent<IProviderListProps> = () => {
                 <thead>
                     <tr>
                         <th>Provider</th>
-                        <th>Phone</th>
+                        <th>Phone </th>
                         <th>Email</th>
                         <th>Provider ID</th>
                     </tr>
