@@ -29,9 +29,9 @@ const ProviderListTable: React.FunctionComponent<IProviderListProps> = () => {
             <table id="table">
                 <thead>
                     <tr>
-                        <th>Provider</th>
+                        <th>Provider </th>
                         <th>Phone </th>
-                        <th>Email</th>
+                        <th>E-mail</th>
                         <th>Provider ID</th>
                     </tr>
                 </thead>
